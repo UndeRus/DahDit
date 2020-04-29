@@ -16,6 +16,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.support.annotation.ColorInt
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -105,6 +106,11 @@ class DottedLine
             }
         }
 
+    }
+
+    fun setDotColor(@ColorInt color: Int) {
+        paint.color = color
+        invalidate()
     }
 
     enum class Orientation {

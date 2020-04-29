@@ -12,8 +12,13 @@
 
 package com.xfinity.dahditsample;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+import com.xfinity.dahdit.DottedLine;
 
 public class DemoActivity extends AppCompatActivity {
 
@@ -21,5 +26,29 @@ public class DemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
+
+        DottedLine line = findViewById(R.id.line4);
+
+
+
+        final Handler handler = new Handler();
+
+
+        final boolean[] isBlack = {false};
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                isBlack[0] = !isBlack[0];
+
+                if (isBlack[0]) {
+                    line.setDotColor(Color.RED);
+                } else {
+                    line.setDotColor(Color.BLACK);
+                }
+
+                handler.postDelayed(this, 1000);
+            }
+        };
+        runnable.run();
     }
 }
